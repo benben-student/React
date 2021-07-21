@@ -35,6 +35,7 @@
         <span style={{color:'white',fontSize:'29px'}}>{myData.toLocaleUpperCase()}</span>
       </h2>
       <input type="text" name="" id=""/>
+      <Good>123</Good>
 </div>
   );
   //2.渲染虚拟DOM到页面
@@ -46,6 +47,9 @@
     //4.内联样式，要用style={{key：value}}的形式去写
     //5.只能用一个根标签
     //6.标签必须闭合
+    //7.标签首字母
+        //(1)若小写字母开头，则将该标签转为html中同名元素，若html中无对应标签则报错
+        //(2)若大写字母开头，react就去渲染对应的组件，若组件没有定义，则报错
 
  </script> <!---->
   
