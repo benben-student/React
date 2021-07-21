@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsx语法规则</title>
+</head>
+<body>
+      <!--准备好一个容器-->
+  <div id="test"></div>
+  <!--引入react核心库-->
+  <script src="../JS/react.development.js"></script>
+  <!--用于支持react操作ODM-->
+  <script src="../JS/react-dom.development.js"></script>
+<!--用于将jsx转为js-->
+  <script src="../JS/babel.min.js"></script>
+
+  <script type="text/babel">//此处一定要写babel
+  const myId='aTgUiGu';
+  const myData='Hello,rEact';
+  //1.创建虚拟DOM
+  const VDOM=(
+      <h2 id={myId.toLowerCase()}>
+        <span>{myData.toLocaleLowerCase()}</span>
+      </h2>
+  );
+  //2.渲染虚拟DOM到页面
+  ReactDOM.render(VDOM,document.getElementById('test'));
+  //jsx语法规则：
+    //1.定义虚拟DOM时，不要用引号
+
+ </script> <!---->
+  
+    
+</body>
+</html>
