@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jsx语法规则</title>
+    <style>
+        .title{
+            background-color: aqua;
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
       <!--准备好一个容器-->
@@ -21,14 +27,25 @@
   const myData='Hello,rEact';
   //1.创建虚拟DOM
   const VDOM=(
-      <h2 id={myId.toLowerCase()}>
-        <span>{myData.toLocaleLowerCase()}</span>
+<div>
+      <h2 className="title" id={myId.toLowerCase()}>
+        <span style={{color:'white',fontSize:'29px'}}>{myData.toLocaleLowerCase()}</span>
       </h2>
+      <h2 className="title" id={myId.toLowerCase()}>
+        <span style={{color:'white',fontSize:'29px'}}>{myData.toLocaleUpperCase()}</span>
+      </h2>
+      <input type="text" name="" id=""/>
+</div>
   );
   //2.渲染虚拟DOM到页面
   ReactDOM.render(VDOM,document.getElementById('test'));
   //jsx语法规则：
     //1.定义虚拟DOM时，不要用引号
+    //2.便签中混入JS表达式时要用{}
+    //3.样式的类名指定不要用class，要用className
+    //4.内联样式，要用style={{key：value}}的形式去写
+    //5.只能用一个根标签
+    //6.标签必须闭合
 
  </script> <!---->
   
