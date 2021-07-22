@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+          <!--准备好一个容器-->
+  <div id="test"></div>
+  <!--引入react核心库-->
+  <script src="../JS/react.development.js"></script>
+  <!--用于支持react操作ODM-->
+  <script src="../JS/react-dom.development.js"></script>
+<!--用于将jsx转为js-->
+  <script src="../JS/babel.min.js"></script>
+
+  <script type="text/babel">//此处一定要写babel
+  //1.创建函数式组件
+  function MyComponent(){
+      console.log(this);
+        return <h2>我是函数定义的组件（适用于【简单组件】的定义）</h2>
+  }
+  //2.渲染组件到页面
+  ReactDOM.render(<MyComponent/>,document.getElementById('test'));
+ </script> 
+</body>
+</html>
