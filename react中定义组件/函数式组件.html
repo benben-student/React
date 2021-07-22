@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>函数式组件</title>
+
 </head>
 <body>
           <!--准备好一个容器-->
@@ -24,6 +25,11 @@
   }
   //2.渲染组件到页面
   ReactDOM.render(<MyComponent/>,document.getElementById('test'));
+  /* 
+     执行了 ReactDOM.render(<MyComponent/>.....之后，发生了什么？
+           1.React解析组件标签，找到了MyComponent组件
+           2.发现组件时使用函数定义的，随后调用该函数，将返回的虚拟DOM转为真实DOM，随后呈现在页面中
+  */
  </script> 
 </body>
 </html>
