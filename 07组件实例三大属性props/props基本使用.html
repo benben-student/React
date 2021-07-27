@@ -8,7 +8,9 @@
 </head>
 <body>
       <!--准备好一个容器-->
-  <div id="test"></div>
+  <div id="test1"></div>
+  <div id="test2"></div>
+  <div id="test3"></div>
   <!--引入react核心库-->
   <script src="../JS/react.development.js"></script>
   <!--用于支持react操作ODM-->
@@ -19,18 +21,22 @@
   <script type="text/babel">//此处一定要写babel
       //创建组件
          class Person extends React.Component{
+
              render(){
+                 console.log(this)
                  return(
                      <ul>
-                        <li>姓名:tom</li>
-                        <li>性别:女</li>
-                        <li>年龄:18</li>
+                        <li>姓名:{this.props.name}</li>
+                        <li>性别:{this.props.sex}</li>
+                        <li>年龄:{this.props.age}</li>
                     </ul>
                  )
              }
          }
       //渲染组件到页面
-      ReactDOM.render(<Person/>,document.getElementById('test'));   
+      ReactDOM.render(<Person name="tom" age="18" sex="女"/>,document.getElementById('test1'));   
+      ReactDOM.render(<Person name="jerry" age="18" sex="男"/>,document.getElementById('test2')); 
+      ReactDOM.render(<Person name="Bob" age="19" sex="女"/>,document.getElementById('test3')); 
  </script> <!---->
     
 </body>
