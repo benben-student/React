@@ -17,6 +17,8 @@
   <script src="../JS/react-dom.development.js"></script>
 <!--用于将jsx转为js-->
   <script src="../JS/babel.min.js"></script>
+  <!--引入prop-types  用于对组件标签属性进行限制-->
+  <script type="text/javascript" src="../JS/prop-types.js"></script>
 
   <script type="text/babel">//此处一定要写babel
       //创建组件
@@ -33,6 +35,11 @@
                  )
              }
          }
+         Person.propTypes={
+                 name:PropTypes.string.isRequired,
+                 sex:PropTypes.string,
+                 age:propTypes.number,
+             }
       //渲染组件到页面
       ReactDOM.render(<Person name="jerry" age={19} sex="男" />,document.getElementById('test1'));   
       ReactDOM.render(<Person name="tom" age={18} sex="女" />,document.getElementById('test2')); 
