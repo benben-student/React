@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>虚拟DOM与真实DOM</title>
+</head>
+<body>
+  <!--准备好一个容器-->
+  <div id="test"></div>
+   <!--引入react核心库-->
+   <script src="../JS/react.development.js"></script>
+   <!--用于支持react操作ODM-->
+   <script src="../JS/react-dom.development.js"></script>
+ <!--用于将jsx转为js-->
+   <script src="../JS/babel.min.js"></script>
 
-    <title>Document</title>
-  </head>
-  <body>
-    <!--准备好一个容器-->
-    <div id="test"></div>
-    <!--引入react核心库-->
-    <script src="../JS/react.development.js"></script>
-    <script src="../JS/react-dom.development.js"></script>
-    <script src="../JS/babel.min.js"></script>
-    <script type="text/babel">
-      //此处一定要写babel
-      //组件创建
-      class Demo extends React.component {
-        //展示左侧输入框的数据
-        showData = () => {
-          console.log(this);
-        };
-        render() {
-          return (
-            <div>
-              <input id="input1" type="text" placeholder="点击按钮提示数据" />
-              &nbsp;
-              <button onClick={this.showData}>点我提示左侧的数据</button>&nbsp;
-              <input type="text" placeholder="失去焦点提示数据" />
-            </div>
-          );
-        }
-      }
-      //渲染组件到页面
-      ReactDOM.render(<Demo a="1" b="2"/>, document.getElementById('test'));
-    </script>
+   <script type="text/babel">//此处一定要写babel
+   //创建组件
+   class Demo extends React.Component{
+     //展示左侧输入框的数据
+     showData=()=>{
+       const input=document.getElementById('input1')
+       alert(input.value);
+     }
+     render(){
+       return(
+         <div>
+            <input ref="input1" type="text" placeholder="点击按钮提示数据"/>&nbsp;
+            <button onClick={this.showData}>点我提示左侧的数据</button>&nbsp;
+            <input type="text" placeholder="失去焦点提示数据"/>
+          </div>
+       )
+     }
+   }
+   //渲染组件到页面
+   ReactDOM.render(<Demo/>,document.getElementById('test'));
+  </script> 
+
+   
   </body>
 </html>
