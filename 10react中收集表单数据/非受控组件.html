@@ -17,7 +17,25 @@
    <script src="../JS/babel.min.js"></script>
 
    <script type="text/babel">//此处一定要写babel
- 
+   //创建组件
+       class Login extends React.Component{
+           handleSubmit=(event)=>{
+               event.preventDefault()  //阻止表单提交
+               const {username,password}=this
+               alert(`你输入的用户名是：${username.value},你输入的密码是：${password.value}`)
+           }
+           render(){
+               return(
+                   <form action="http://www.atguigu.com" onSubmit={this.handleSubmit}>
+                   用户名：<input ref={c=>this.username=c} type="text" name="username"/>
+                   密码：<input ref={c=>this.password=c} type="text" name="password"/>
+                   <button>登录</button>
+                   </form>
+               )
+           }
+       }
+       //渲染组件
+       ReactDOM.render(<Login/>,document.getElementById('test'));
   </script> 
 
   </body>
