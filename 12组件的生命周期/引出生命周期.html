@@ -23,16 +23,25 @@
             //卸载组件
             ReactDOM.unmountComponentAtNode(document.getElementById('test'))
         }
+        //组件挂完毕
+        componentDidMount(){
+             this.timer=setInterval(()=>{
+                 //获取原状态
+                 let {opacity}=this.state
+                 //减小0.1
+                 opacity-=0.1
+                 if(opacity<=0) opacity=1
+                 //设置新的透明度
+                 this.stateState({opacity})
+             },200)
+        }
+        //组件将要卸载
+        componentWillUnmount(){
+                  //清除定时器
+                  clearInterval(this.timer)
+        }
+        //初始化渲染，状态更新之后
         render(){
-            setInterval(()=>{
-                //获取原状态
-                let {opacity}=this.state
-                //减小0.1
-                opacity-=0.1
-                if(opacity<=0) opacity=1
-                //设置新的透明度
-                this.setState({opacity})
-            },200)
             return(
              <div>
                 <h2 style={{opacity:this.state.opacity}}>React学不会怎么办</h2>
