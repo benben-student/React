@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引出生命周期</title>
+</head>
+<body>
+    <div id="test"></div>
+    <!--引入react核心库-->
+    <script src="../JS/react.development.js"></script>
+    <!--用于支持react操作ODM-->
+    <script src="../JS/react-dom.development.js"></script>
+  <!--用于将jsx转为js-->
+    <script src="../JS/babel.min.js"></script>
+ 
+    <script type="text/babel">//此处一定要写babel
+    //创建组件
+    class Life extends React.Component{
+        state={opacity:1}
+        death=()=>{
+            //卸载组件
+            ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+        }
+        render(){
+            setInterval(()=>{
+                //获取原状态
+                let {opacity}=this.state
+                //减小0.1
+                opacity-=0.1
+                if(opacity<=0) opacity=1
+                //设置新的透明度
+                this.setState({opacity})
+            },200)
+            return(
+             <div>
+                <h2 style={{opacity:this.state.opacity}}>React学不会怎么办</h2>
+                <button onClick={this.death}>不活了</button>    
+            </div>
+            )
+        }
+    }
+    //渲染组件
+    ReactDOM.render(<Life/>,document.getElementById('test'))
+   </script> 
+    
+</body>
+</html>
