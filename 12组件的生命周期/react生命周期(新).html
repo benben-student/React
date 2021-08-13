@@ -43,7 +43,7 @@
               this.forceUpdate()
             }
             //组件将要挂载的钩子
-            componentWillMount(){
+            UNSAFE_componentWillMount(){
                 console.log('Count---componentWillMount');
             }
             //组件挂载完毕的钩子
@@ -60,7 +60,7 @@
                return true
              }
              //组件将要更新的钩子
-             componentWillUpdate(){
+             UNSAFE_componentWillUpdate(){
                console.log('Count---componentWillUpdate')
              }
              //组件更新完毕的钩子
@@ -98,22 +98,9 @@
         }
         class B extends React.Component{
           //组件将要接收新的props的钩子
-          ComponentWillReceiveProps(props){
+          UNSAFE_componentWillReceiveProps(props){
             console.log('B---componentWillReceiveProps',props);
           }
-              //控制组件更新的"阀门"
-              shouldComponentUpdate(){
-               console.log('B---shouldComponentUpdate');
-               return true
-             }
-             //组件将要更新的钩子
-             componentWillUpdate(){
-               console.log('B---componentWillUpdate')
-             }
-             //组件更新完毕的钩子
-             componentDidUpdate(){
-               console.log('B---componentDidUpdate')
-             }
           render(){
             console.log()
             return(
