@@ -97,10 +97,25 @@
           }
         }
         class B extends React.Component{
-          ComponentWillReceiveProps(){
-            console.log('B---componentWillReceiveProps');
+          //组件将要接收新的props的钩子
+          ComponentWillReceiveProps(props){
+            console.log('B---componentWillReceiveProps',props);
           }
+              //控制组件更新的"阀门"
+              shouldComponentUpdate(){
+               console.log('B---shouldComponentUpdate');
+               return true
+             }
+             //组件将要更新的钩子
+             componentWillUpdate(){
+               console.log('B---componentWillUpdate')
+             }
+             //组件更新完毕的钩子
+             componentDidUpdate(){
+               console.log('B---componentDidUpdate')
+             }
           render(){
+            console.log()
             return(
               <div>我是B组件，接收到的车是:{this.props.carName}</div>
             )
