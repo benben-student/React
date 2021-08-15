@@ -45,7 +45,12 @@
             //若state的值在任何时候都取决于props，那么可以使用getDerivedStateFromProps
            static getDerivedStateFromProps(props,state){
               console.log('getDerivedStateFromProps',props,state);
-              return props
+              return null
+            }
+            //在更新之前获取快照
+            getSnapshotBeforeUpdate(){
+              console.log('getSnapshotBeforeUpdate');
+              return 'atguigu'
             }
             //组件挂载完毕的钩子
             componentDidMount(){
@@ -61,8 +66,8 @@
                return true
              }
              //组件更新完毕的钩子
-             componentDidUpdate(){
-               console.log('Count---componentDidUpdate')
+             componentDidUpdate(preProps,preState,snapshotValue){
+               console.log('Count---componentDidUpdate',preProps,preState,snapshotValue);
              }
             render(){
               console.log('Count---render');
@@ -76,11 +81,11 @@
                     </div>
                 )
             }
-        } 
+        }  
 
         
         //渲染组件
-        ReactDOM.render(<Count/>,document.getElementById('test'))
+        ReactDOM.render(<Count count={199}/>,document.getElementById('test'))
   </script> 
   </body>
 </html>
