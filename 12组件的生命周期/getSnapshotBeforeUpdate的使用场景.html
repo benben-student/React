@@ -1,64 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-  <style>
-    .list{
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style>
+      .list {
         width: 200px;
         height: 150px;
         background-color: aqua;
         overflow: auto;
-    }
-    .news{
+      }
+      .news {
         height: 30px;
-    }
-</style>
-</head>
-<body>
-  <!--准备好一个容器-->
-  <div id="test"></div>
-   <!--引入react核心库-->
-   <script src="../JS_COPY/react.development.js"></script>
-   <!--用于支持react操作ODM-->
-   <script src="../JS_COPY/react-dom.development.js"></script>
- <!--用于将jsx转为js-->
-   <script src="../JS_COPY/babel.min.js"></script>
+      }
+    </style>
+  </head>
+  <body>
+    <!--准备好一个容器-->
+    <div id="test"></div>
+    <!--引入react核心库-->
+    <script src="../JS_COPY/react.development.js"></script>
+    <!--用于支持react操作ODM-->
+    <script src="../JS_COPY/react-dom.development.js"></script>
+    <!--用于将jsx转为js-->
+    <script src="../JS_COPY/babel.min.js"></script>
 
-   <script type="text/babel">//此处一定要写babel
-     class NewsList extends React.Component{
-         state={newsArr:[]}
-         componentDidMount(){
-             setInterval(()=>{
-                 //获取原状态
-                 const {newsArr}=this.state
-                 //模拟一条新闻
-                 const news='新闻'+(newsArr.length+1)
-                 //更新状态
-                 this.setState({newsArr:[news,...newsArr]})
-             },1000);
-         }
-         getSnapshotBeforeUpdate(){
-             return this.refs.list.scrollHeight
-         }
-         componentDidUpdate(preProps,preState,height){
-             this.refs.list.scrollTop+=this.refs.list.scrollHeight-height
-         }
-         render(){
-             return(
-                <div className="list" ref="list">
-                   {
-                     this.state.newsArr.map((n,index)=>{
-                         return <div key="index" className="news">{n}</div>
-                     })
-                   }        
-                </div>
-             )
-         }
-     }
-     ReactDOM.render(<NewsList/>,document.getElementById('test'))
-  </script> 
+    <script type="text/babel">
+      //此处一定要写babel
+      class NewsList extends React.Component {
+        state = { newsArr: [] };
+        componentDidMount() {
+          setInterval(() => {
+            //获取原状态
+            const { newsArr } = this.state;
+            //模拟一条新闻
+            const news = "新闻" + (newsArr.length + 1);
+            //更新状态
+            this.setState({ newsArr: [news, ...newsArr] });
+          }, 1000);
+        }
+        getSnapshotBeforeUpdate() {
+          return this.refs.list.scrollHeight;
+        }
+        componentDidUpdate(preProps, preState, height) {
+          this.refs.list.scrollTop += this.refs.list.scrollHeight - height;
+        }
+        render() {
+          return (
+            <div className="list" ref="list">
+              {this.state.newsArr.map((n, index) => {
+                return (
+                  <div key="index" className="news">
+                    {n}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<NewsList />, document.getElementById("test"));
+    </script>
   </body>
 </html>
