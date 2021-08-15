@@ -40,9 +40,15 @@
                  this.setState({newsArr:[news,...newsArr]})
              },1000);
          }
+         getSnapshotBeforeUpdate(){
+             return this.refs.list.scrollHeight
+         }
+         componentDidUpdate(preProps,preState,height){
+             this.refs.list.scrollTop+=this.refs.list.scrollHeight-height
+         }
          render(){
              return(
-                <div className="list">
+                <div className="list" ref="list">
                    {
                      this.state.newsArr.map((n,index)=>{
                          return <div key="index" className="news">{n}</div>
