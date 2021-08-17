@@ -75,16 +75,16 @@
                  {id:1,name:'小张',age:18},
                  {id:2,name:'小李',age:19},
             初始的虚拟DOM：
-                 <li key=1>小张---18</li>
-                 <li key=2>小李---19</li>
+                 <li key=1>小张---18<input type="text"/></li>
+                 <li key=2>小李---19<input type="text"/></li>
             更新后的数据：
                  {id:3,name:'小王',age:20},
                  {id:1,name:'小张',age:18},
                  {id:2,name:'小李',age:19},
             更新数据后的虚拟DOM：
-                 <li key=0>小王---20</li>
-                 <li key=1>小张---18</li>
-                 <li key=2>小李---19</li>
+                 <li key=0>小王---20<input type="text"/></li>
+                 <li key=1>小张---18<input type="text"/></li>
+                 <li key=2>小李---19<input type="text"/></li>
          */
          class Person extends React.Component{
            state={
@@ -125,7 +125,7 @@
              )
            }
          }
-        ReactDOM.render(<Person/>,document.getElementById('test'))
+  ReactDOM.render(<Person/>,document.getElementById('test'))
        
   </script> 
   </body>
