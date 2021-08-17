@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>虚拟DOM与真实DOM</title>
+</head>
+<body>
+  <!--准备好一个容器-->
+  <div id="test"></div>
+   <!--引入react核心库-->
+   <script src="../JS_COPY/react.development.js"></script>
+   <!--用于支持react操作ODM-->
+   <script src="../JS_COPY/react-dom.development.js"></script>
+ <!--用于将jsx转为js-->
+   <script src="../JS_COPY/babel.min.js"></script>
+
+   <script type="text/babel">//此处一定要写babel
+   
+        
+        //渲染组件
+        ReactDOM.render(<Count count={199}/>,document.getElementById('test'))
+  </script> 
+  </body>
+</html>
