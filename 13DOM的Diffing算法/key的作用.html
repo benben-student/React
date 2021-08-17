@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>虚拟DOM与真实DOM</title>
+  <title></title>
 </head>
 <body>
   <!--准备好一个容器-->
@@ -49,7 +49,25 @@
 								1.最好使用每条数据的唯一标识作为key, 比如id、手机号、身份证号、学号等唯一值。
 								2.如果确定只是简单的展示数据，用index也是可以的。
    */
-	
+
+   
+	       /*
+         慢动作回放---使用index索引值作为key
+            初始数据：
+                 {id:1,name:'小张',age:18},
+                 {id:2,name:'小李',age:19},
+            初始的虚拟DOM：
+                 <li key=0>小张---18</li>
+                 <li key=1>小李---19</li>
+            更新后的数据：
+                 {id:3,name:'小王',age:20},
+                 {id:2,name:'小张',age:18},
+                 {id:1,name:'小李',age:19},
+            更新数据后的虚拟DOM：
+                 <li key=0>小王---20</li>
+                 <li key=1>小张---18</li>
+                 <li key=2>小李---19</li>
+         */
          class Person extends React.Component{
            state={
              persons:[
