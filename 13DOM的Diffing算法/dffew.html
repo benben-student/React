@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--准备好一个容器-->
+
+    <!--引入react核心库-->
+    <script src="../JS_COPY/react.development.js"></script>
+    <!--用于支持react操作ODM-->
+    <script src="../JS_COPY/react-dom.development.js"></script>
+    <!--用于将jsx转为js-->
+    <script src="../JS_COPY/babel.min.js"></script>
+    <script type="text/babel">
+    
+      class ListItem extends Component {
+
+        
+        render() {
+          return (
+            <ul>
+              {this.props.data.map((element) => {
+                return (
+                  <li className="listItem" key={element.name}>
+                    <input type="checkbox" />
+                    <span>{element.name}</span>
+                    <button className="delete">删除</button>
+                  </li>
+                );
+              })}
+            </ul>
+          );
+        }
+      }
+      export default ListItem;
+
+
+      import ListItem from "./ListItem";
+      class TodoList extends Component {
+        constructor() {
+          super();
+          this.state = {
+            list: [
+              {
+                name: "learn english",
+                status: 0,
+              },
+              {
+                name: "Learn guitar",
+                status: 0,
+              },
+              {
+                name: "weight less than 100",
+                status: 0,
+              },
+              {
+                name: "have 100,000 deposit",
+                status: 0,
+              },
+            ],
+          };
+        }
+
+        render() {
+          return (
+            <div className="reactTodoList">
+              <header className="header">React todo list</header>
+              <ListItem data={this.state.list} />
+              <footer>
+                <input type="text" placeholder="添加todo"></input>
+                <button className="addTodo">添加</button>
+              </footer>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<TodoList />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
