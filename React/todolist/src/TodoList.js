@@ -4,21 +4,26 @@ class TodoList extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      list:[
-      
-      ]
+      list:[],
+      inputValue: ''
     }
   }
   handleBtnClick(){
     this.setState({
-      list:[...this.state.list, 'hello world']
+      list:[...this.state.list, this.state.inputValue],
+      inputValue:''
+    })
+  }
+  handleInputChange(e){
+    this.setState({
+      inputValue: e.target.value
     })
   }
   render(){
     return(
       <div>
         <div>
-      <input/>
+      <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}/>
       <button onClick={this.handleBtnClick.bind(this)}>add</button>
       </div>
       <ul>
