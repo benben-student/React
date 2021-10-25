@@ -8,6 +8,9 @@ class TodoList extends React.Component{
       list:[],
       inputValue: ''
     }
+    this.handleInputChange=this.handleInputChange.bind(this);
+    this.handleBtnClick=this.handleBtnClick.bind(this);
+    this.handleDelete=this.handleDelete.bind(this);
   }
   handleBtnClick(){
     this.setState({
@@ -27,20 +30,27 @@ class TodoList extends React.Component{
     list.splice(index,1);
     this.setState({list})
   }
+  getTodoItems(){
+    return(
+      this.state.list.map((item,index) => {
+        return (
+          <TodoItem 
+          delete={this.handleDelete}
+          key={index} 
+          content={item}
+          index={index}
+          />
+        )}) 
+    )
+  }
   render(){
     return(
       <div>
         <div>
-      <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}/>
-      <button onClick={this.handleBtnClick.bind(this)}>add</button>
+      <input value={this.state.inputValue} onChange={this.handleInputChange}/>
+      <button onClick={this.handleBtnClick}>add</button>
       </div>
-      <ul>
-        {
-          this.state.list.map((item,index) => {
-            return <TodoItem delete={this.handleDelete.bind(this)} key={index} content={item} index={index}/>
-          }) 
-        }
-      </ul>
+      <ul>{this.getTodoItems()}</ul>
       </div>
     )
   }
